@@ -1,0 +1,66 @@
+type Timestamp = int;
+type TaskId = text;
+type Task = 
+ record {
+   completed: bool;
+   createdAt: Timestamp;
+   description: text;
+   dueDate: opt int;
+   id: TaskId;
+   order: nat;
+   parentId: opt TaskId;
+   priority: Priority;
+   projectId: ProjectId;
+   recurringFrequency: RecurringFrequency;
+   tags: vec text;
+   title: text;
+   updatedAt: Timestamp;
+ };
+type RecurringFrequency = 
+ variant {
+   daily;
+   monthly;
+   none;
+   weekdays;
+   weekly;
+ };
+type ProjectId = text;
+type Project = 
+ record {
+   createdAt: Timestamp;
+   description: text;
+   id: ProjectId;
+   name: text;
+   order: nat;
+ };
+type Priority = 
+ variant {
+   high;
+   low;
+   medium;
+   none;
+ };
+type AppData = 
+ record {
+   projects: vec Project;
+   tasks: vec Task;
+ };
+service : {
+  createProject: (name: text, description: text, order: nat) -> (Project);
+  createTask: (projectId: ProjectId, parentId: opt TaskId, title: text,
+   description: text, dueDate: opt int, priority: Priority, order: nat, tags:
+   vec text, recurringFrequency: RecurringFrequency) -> (Task);
+  deleteProject: (id: ProjectId) -> ();
+  deleteTask: (id: TaskId) -> ();
+  getData: () -> (AppData) query;
+  getProjects: () -> (vec Project) query;
+  getTasks: () -> (vec Task) query;
+  getTasksByProject: (projectId: ProjectId) -> (vec Task) query;
+  saveAll: (incomingProjects: vec Project, incomingTasks: vec Task) -> ();
+  updateProject: (id: ProjectId, name: text, description: text, order:
+   nat) -> (opt Project);
+  updateTask: (id: TaskId, projectId: ProjectId, parentId: opt TaskId, title:
+   text, description: text, dueDate: opt int, priority: Priority, completed:
+   bool, order: nat, tags: vec text, recurringFrequency:
+   RecurringFrequency) -> (opt Task);
+}

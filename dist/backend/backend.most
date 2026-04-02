@@ -1,0 +1,48 @@
+// Version: 1.0.0
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Priority__695711595 = {#high; #low; #medium; #none};
+type ProjectId__478417951 = Text;
+type Project__614212307 =
+  {
+    createdAt : Timestamp__301639476;
+    description : Text;
+    id : ProjectId__478417951;
+    name : Text;
+    order : Nat
+  };
+type RecurringFrequency__859650803 =
+  {#daily; #monthly; #none; #weekdays; #weekly};
+type TaskId__207642484 = Text;
+type Task__431803600 =
+  {
+    completed : Bool;
+    createdAt : Timestamp__301639476;
+    description : Text;
+    dueDate : ?Int;
+    id : TaskId__207642484;
+    order : Nat;
+    parentId : ?TaskId__207642484;
+    priority : Priority__695711595;
+    projectId : ProjectId__478417951;
+    recurringFrequency : RecurringFrequency__859650803;
+    tags : [Text];
+    title : Text;
+    updatedAt : Timestamp__301639476
+  };
+type Timestamp__301639476 = Int;
+actor {
+  stable nextId : {var count : Nat};
+  stable projects :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Project__614212307]];
+      var elementIndex : Nat__490723111
+    };
+  stable tasks :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Task__431803600]];
+      var elementIndex : Nat__490723111
+    }
+};

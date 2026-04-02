@@ -1,0 +1,259 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Space Grotesk";
+    --font-body: "DM Sans";
+    --font-mono: "Geist Mono";
+    --radius: 0.625rem;
+
+    --background: 0.145 0.014 260;
+    --foreground: 0.95 0.01 260;
+    --card: 0.18 0.014 260;
+    --card-foreground: 0.95 0.01 260;
+    --popover: 0.22 0.02 260;
+    --popover-foreground: 0.95 0.01 260;
+
+    --primary: 0.75 0.15 190;
+    --primary-foreground: 0.145 0.014 260;
+
+    --secondary: 0.22 0.02 260;
+    --secondary-foreground: 0.85 0.01 260;
+    --muted: 0.22 0.02 260;
+    --muted-foreground: 0.55 0.01 260;
+
+    --accent: 0.75 0.15 190;
+    --accent-foreground: 0.145 0.014 260;
+
+    --destructive: 0.55 0.2 25;
+    --destructive-foreground: 0.95 0.01 25;
+
+    --border: 0.28 0.02 260;
+    --input: 0.28 0.02 260;
+    --ring: 0.75 0.15 190;
+
+    --chart-1: 0.49 0.24 264;
+    --chart-2: 0.7 0.17 162;
+    --chart-3: 0.77 0.19 70;
+    --chart-4: 0.63 0.27 304;
+    --chart-5: 0.65 0.25 16;
+
+    --sidebar: 0.145 0.014 260;
+    --sidebar-foreground: 0.95 0.01 260;
+    --sidebar-primary: 0.75 0.15 190;
+    --sidebar-primary-foreground: 0.145 0.014 260;
+    --sidebar-accent: 0.22 0.02 260;
+    --sidebar-accent-foreground: 0.85 0.01 260;
+    --sidebar-border: 0.28 0.02 260;
+    --sidebar-ring: 0.75 0.15 190;
+  }
+
+  .dark {
+    --background: 0.145 0.014 260;
+    --foreground: 0.95 0.01 260;
+    --card: 0.18 0.014 260;
+    --card-foreground: 0.95 0.01 260;
+    --popover: 0.22 0.02 260;
+    --popover-foreground: 0.95 0.01 260;
+
+    --primary: 0.75 0.15 190;
+    --primary-foreground: 0.145 0.014 260;
+
+    --secondary: 0.22 0.02 260;
+    --secondary-foreground: 0.85 0.01 260;
+    --muted: 0.22 0.02 260;
+    --muted-foreground: 0.55 0.01 260;
+
+    --accent: 0.75 0.15 190;
+    --accent-foreground: 0.145 0.014 260;
+
+    --destructive: 0.55 0.2 25;
+    --destructive-foreground: 0.95 0.01 25;
+
+    --border: 0.28 0.02 260;
+    --input: 0.28 0.02 260;
+    --ring: 0.75 0.15 190;
+
+    --chart-1: 0.49 0.24 264;
+    --chart-2: 0.7 0.17 162;
+    --chart-3: 0.77 0.19 70;
+    --chart-4: 0.63 0.27 304;
+    --chart-5: 0.65 0.25 16;
+
+    --sidebar: 0.18 0.014 260;
+    --sidebar-foreground: 0.95 0.01 260;
+    --sidebar-primary: 0.75 0.15 190;
+    --sidebar-primary-foreground: 0.145 0.014 260;
+    --sidebar-accent: 0.22 0.02 260;
+    --sidebar-accent-foreground: 0.85 0.01 260;
+    --sidebar-border: 0.28 0.02 260;
+    --sidebar-ring: 0.75 0.15 190;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  font-display: swap;
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .transition-colors-fast {
+    transition: color 0.15s ease, background-color 0.15s ease, border-color
+      0.15s ease;
+  }
+  .shadow-elevated {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  .shadow-subtle {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  .shadow-card {
+    box-shadow: 0 0 0 1px oklch(var(--border) / 0.8), 0 2px 8px
+      rgba(0, 0, 0, 0.15);
+  }
+
+  /* Compact density helpers */
+  .row-compact {
+    @apply py-1 px-3 text-sm;
+  }
+  .gap-compact {
+    gap: 0.375rem;
+  }
+
+  /* Custom scrollbar */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(var(--border)) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: oklch(var(--border));
+    border-radius: 2px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: oklch(var(--muted-foreground));
+  }
+
+  /* Focus ring */
+  .focus-ring {
+    @apply outline-none ring-2 ring-ring ring-offset-1 ring-offset-background;
+  }
+
+  /* Truncate single line */
+  .truncate-1 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  /* Priority dot colors */
+  .priority-high {
+    color: oklch(0.65 0.2 25);
+  }
+  .priority-medium {
+    color: oklch(0.75 0.18 70);
+  }
+  .priority-low {
+    color: oklch(0.7 0.1 200);
+  }
+  .priority-none {
+    color: oklch(var(--muted-foreground));
+  }
+
+  .priority-bg-high {
+    background-color: oklch(0.65 0.2 25 / 0.15);
+  }
+  .priority-bg-medium {
+    background-color: oklch(0.75 0.18 70 / 0.15);
+  }
+  .priority-bg-low {
+    background-color: oklch(0.7 0.1 200 / 0.15);
+  }
+  .priority-bg-none {
+    background-color: oklch(var(--muted) / 0.5);
+  }
+
+  /* Accent glow on hover */
+  .glow-primary-hover:hover {
+    box-shadow: 0 0 12px oklch(var(--primary) / 0.35);
+  }
+
+  /* Entrance animation */
+  .animate-slide-up {
+    animation: slide-up 0.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.15s ease both;
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+/* Global scrollbar for the whole app */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(0.28 0.02 260) transparent;
+}
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: oklch(0.28 0.02 260);
+  border-radius: 2px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.38 0.02 260);
+}

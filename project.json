@@ -1,0 +1,23 @@
+{
+  "overview": "A polished real-time task manager with project-based organization, smart filtering, keyboard shortcuts, drag-and-drop task reordering, inline editing, light/dark theming, and auto-save persistence.",
+  "features": [
+    "Task list with title, description, due date, priority, and completion status",
+    "Collapsible sidebar for projects with task counts",
+    "Filtering by status, priority, due date, and search",
+    "Auto-save with 2-second debounce and Cmd/Ctrl+S manual save",
+    "Keyboard shortcuts: Cmd/Ctrl+N, S, D, Delete",
+    "Light/dark mode toggle persisted across sessions",
+    "Drag & drop to reorder tasks and move between projects",
+    "Subtasks, recurring tasks, tags/labels, and inline editing"
+  ],
+  "category": "productivity",
+  "tags": [
+    "task-manager",
+    "productivity",
+    "drag-and-drop",
+    "keyboard-shortcuts",
+    "dark-mode",
+    "real-time"
+  ],
+  "last_updated": "2026-04-02T21:57:37.577Z"
+}
